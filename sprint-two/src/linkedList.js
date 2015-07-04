@@ -44,6 +44,17 @@ var LinkedList = function(){
     return targetFound;
   };
 
+  list.each = function(func){
+    var actOnNode = function(node) {
+      if(node === null) {
+        return;
+      }
+      func(node.value);
+      actOnNode(node.next);
+    };
+    actOnNode(list.head);
+  };
+
   return list;
 };
 
